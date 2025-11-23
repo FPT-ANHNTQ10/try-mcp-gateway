@@ -1,0 +1,33 @@
+# Example configuration file for Enterprise MCP Server
+# Copy this to config.yaml and adjust as needed
+
+# Server Configuration
+server:
+  name: "Enterprise MCP Server"
+  host: "0.0.0.0"
+  port: 8000
+  transport: "http" # Options: http, stdio
+
+# Logging Configuration
+logging:
+  level: "INFO" # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "json" # Options: json, text
+  file: "logs/mcp_server.log"
+
+# API Configuration
+api:
+  request_timeout: 30 # seconds
+  max_retries: 3
+  retry_delay: 1.0 # seconds
+
+# Feature Flags
+features:
+  enable_weather_tool: true
+  enable_ip_info_tool: true
+  enable_dictionary_tool: true
+  enable_exchange_rate_tool: true
+
+# Development Settings
+development:
+  debug_mode: false
+  environment: "development" # Options: development, staging, production
