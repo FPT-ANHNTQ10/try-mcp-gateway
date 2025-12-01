@@ -1,0 +1,33 @@
+# MCP Server Configuration
+server:
+  name: "monitoring-mcp-server"
+  version: "1.0.0"
+  host: "0.0.0.0"
+  port: 8000
+  transport: "stdio"  # Options: stdio, sse, streamable-http
+  log_level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  log_file: "logs/mcp_server.log"
+
+# Data paths
+data:
+  base_path: "data"
+  prometheus_path: "data/prometheus"
+  grafana_path: "data/grafana"
+  logs_path: "data/logs"
+  performance_path: "data/performance"
+
+# Time settings
+time:
+  timezone: "UTC"
+  default_lookback_hours: 24
+
+# Alerting thresholds (for fake data generation)
+thresholds:
+  cpu_warning: 70
+  cpu_critical: 85
+  memory_warning: 80
+  memory_critical: 90
+  error_rate_warning: 1.0
+  error_rate_critical: 5.0
+  latency_warning_ms: 500
+  latency_critical_ms: 1000

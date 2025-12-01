@@ -1,0 +1,258 @@
+# Distributed Tracing Data (OpenTelemetry/Jaeger format)
+# Simulates real APM traces across microservices
+# Last updated: 2025-11-30
+
+traces:
+  - trace_id: "a1b2c3d4e5f67890abcdef1234567890"
+    root_service: "api-gateway"
+    start_time: "2025-12-01T03:06:00Z"
+    duration_ms: 450.2
+    error: false
+    http_status: 200
+    spans:
+      - span_id: "span-001-gateway"
+        parent_span_id: null
+        operation_name: "POST /api/v1/payments"
+        service_name: "api-gateway"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 450.2
+        status_code: "OK"
+        tags:
+          http.method: "POST"
+          http.url: "/api/v1/payments"
+          http.status_code: 200
+          span.kind: "server"
+      - span_id: "span-002-auth"
+        parent_span_id: "span-001-gateway"
+        operation_name: "ValidateToken"
+        service_name: "auth-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 15.5
+        status_code: "OK"
+        tags:
+          auth.method: "JWT"
+          auth.user_id: "user_12345"
+      - span_id: "span-003-payment"
+        parent_span_id: "span-001-gateway"
+        operation_name: "ProcessPayment"
+        service_name: "payment-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 380.0
+        status_code: "OK"
+        tags:
+          payment.amount: 1250.00
+          payment.currency: "USD"
+          payment.method: "CREDIT_CARD"
+      - span_id: "span-004-stripe"
+        parent_span_id: "span-003-payment"
+        operation_name: "StripeChargeCreate"
+        service_name: "payment-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 320.5
+        status_code: "OK"
+        tags:
+          stripe.charge_id: "ch_3P1234567890"
+          stripe.outcome: "authorized"
+      - span_id: "span-005-db"
+        parent_span_id: "span-003-payment"
+        operation_name: "INSERT transactions"
+        service_name: "payment-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 12.3
+        status_code: "OK"
+        tags:
+          db.type: "postgresql"
+          db.instance: "payments_db"
+
+  - trace_id: "b2c3d4e5f6789012bcdef2345678901a"
+    root_service: "api-gateway"
+    start_time: "2025-12-01T03:06:00Z"
+    duration_ms: 30125.0
+    error: true
+    http_status: 504
+    spans:
+      - span_id: "span-101-gateway"
+        parent_span_id: null
+        operation_name: "POST /api/v1/orders"
+        service_name: "api-gateway"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 30125.0
+        status_code: "ERROR"
+        tags:
+          http.method: "POST"
+          http.url: "/api/v1/orders"
+          http.status_code: 504
+          error: true
+      - span_id: "span-102-order"
+        parent_span_id: "span-101-gateway"
+        operation_name: "CreateOrder"
+        service_name: "order-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 30050.0
+        status_code: "ERROR"
+        tags:
+          order.customer_id: "CUST_67890"
+          error: true
+      - span_id: "span-103-inventory"
+        parent_span_id: "span-102-order"
+        operation_name: "ReserveInventory"
+        service_name: "inventory-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 30000.0
+        status_code: "DEADLINE_EXCEEDED"
+        tags:
+          inventory.sku_count: 5
+          error: true
+          error.type: "TIMEOUT"
+
+  - trace_id: "c3d4e5f67890123cdef34567890123ab"
+    root_service: "api-gateway"
+    start_time: "2025-12-01T03:06:00Z"
+    duration_ms: 1850.5
+    error: false
+    http_status: 201
+    spans:
+      - span_id: "span-201-gateway"
+        parent_span_id: null
+        operation_name: "POST /api/v1/users/register"
+        service_name: "api-gateway"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 1850.5
+        status_code: "OK"
+        tags:
+          http.method: "POST"
+          http.url: "/api/v1/users/register"
+          http.status_code: 201
+      - span_id: "span-202-user"
+        parent_span_id: "span-201-gateway"
+        operation_name: "RegisterUser"
+        service_name: "user-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 1800.0
+        status_code: "OK"
+        tags:
+          user.email_domain: "example.com"
+          registration.source: "WEB"
+      - span_id: "span-203-password"
+        parent_span_id: "span-202-user"
+        operation_name: "HashPassword"
+        service_name: "user-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 250.0
+        status_code: "OK"
+        tags:
+          security.algorithm: "bcrypt"
+          security.rounds: 12
+      - span_id: "span-204-db-insert"
+        parent_span_id: "span-202-user"
+        operation_name: "INSERT users"
+        service_name: "user-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 1200.0
+        status_code: "OK"
+        tags:
+          db.type: "postgresql"
+          db.instance: "users_db"
+          warning: "slow_query"
+
+  - trace_id: "d4e5f678901234def4567890123456bc"
+    root_service: "api-gateway"
+    start_time: "2025-12-01T03:06:00Z"
+    duration_ms: 5250.0
+    error: false
+    http_status: 200
+    spans:
+      - span_id: "span-301-gateway"
+        parent_span_id: null
+        operation_name: "GET /api/v1/inventory/search"
+        service_name: "api-gateway"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 5250.0
+        status_code: "OK"
+        tags:
+          http.method: "GET"
+          http.url: "/api/v1/inventory/search"
+          http.status_code: 200
+          warning: "slow_response"
+      - span_id: "span-302-inventory"
+        parent_span_id: "span-301-gateway"
+        operation_name: "SearchInventory"
+        service_name: "inventory-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 5200.0
+        status_code: "OK"
+        tags:
+          search.query: "widget"
+          search.result_count: 1523
+      - span_id: "span-303-db-search"
+        parent_span_id: "span-302-inventory"
+        operation_name: "SELECT inventory"
+        service_name: "inventory-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 4800.0
+        status_code: "OK"
+        tags:
+          db.type: "postgresql"
+          db.rows_returned: 1523
+          warning: "slow_query"
+
+  - trace_id: "e5f6789012345ef567890123456789cd"
+    root_service: "scheduler-service"
+    start_time: "2025-12-01T03:06:00Z"
+    duration_ms: 45000.0
+    error: true
+    http_status: null
+    spans:
+      - span_id: "span-401-scheduler"
+        parent_span_id: null
+        operation_name: "ExecuteNotificationBatch"
+        service_name: "scheduler-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 45000.0
+        status_code: "ERROR"
+        tags:
+          job.name: "DailyNotificationBatch"
+          job.type: "SCHEDULED"
+          error: true
+      - span_id: "span-402-notify"
+        parent_span_id: "span-401-scheduler"
+        operation_name: "SendBatchNotification"
+        service_name: "notification-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 44800.0
+        status_code: "PARTIAL_SUCCESS"
+        tags:
+          batch.total: 10000
+          batch.success: 8500
+          batch.failed: 1500
+          batch.error_rate: 0.15
+
+  - trace_id: "f67890123456f67890123456789abcde"
+    root_service: "order-service"
+    start_time: "2025-12-01T03:06:00Z"
+    duration_ms: 125.0
+    error: true
+    http_status: 500
+    spans:
+      - span_id: "span-501-order"
+        parent_span_id: null
+        operation_name: "GetOrderDetails"
+        service_name: "order-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 125.0
+        status_code: "ERROR"
+        tags:
+          order.id: "ORD_2025112945678"
+          error: true
+          error.type: "DATABASE_ERROR"
+      - span_id: "span-502-db"
+        parent_span_id: "span-501-order"
+        operation_name: "SELECT orders"
+        service_name: "order-service"
+        start_time: "2025-12-01T03:06:00Z"
+        duration_ms: 100.0
+        status_code: "ERROR"
+        tags:
+          db.type: "postgresql"
+          error: true
+          error.message: "Connection refused"

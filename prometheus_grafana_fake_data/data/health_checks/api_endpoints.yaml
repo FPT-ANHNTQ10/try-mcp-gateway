@@ -1,0 +1,313 @@
+# HTTP API Health Check Endpoints
+# Simulates health check monitoring for various microservices
+# Last updated: 2025-11-30
+
+health_check_endpoints:
+  - endpoint_id: "HC001"
+    url: "https://api.payment.example.com/health"
+    name: "Payment Service Health"
+    service: "payment-service"
+    environment: "production"
+    region: "us-east-1"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 200
+        response_time_ms: 45
+        status: "UP"
+        headers:
+          content-type: "application/json"
+          x-response-time: "45ms"
+        body:
+          status: "healthy"
+          version: "2.1.5"
+          uptime_seconds: 345600
+          checks:
+            database: "connected"
+            redis: "connected"
+            rabbitmq: "connected"
+
+  - endpoint_id: "HC002"
+    url: "https://api.order.example.com/health"
+    name: "Order Service Health"
+    service: "order-service"
+    environment: "production"
+    region: "us-east-1"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 500
+        response_time_ms: 15000
+        status: "DOWN"
+        error: "Database connection timeout"
+        headers:
+          content-type: "application/json"
+        body:
+          status: "unhealthy"
+          error: "Database connection pool exhausted"
+          db_connections: 0
+          checks:
+            database: "disconnected"
+            redis: "connected"
+
+  - endpoint_id: "HC003"
+    url: "https://api.user.example.com/health"
+    name: "User Service Health"
+    service: "user-service"
+    environment: "production"
+    region: "us-east-1"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 200
+        response_time_ms: 32
+        status: "UP"
+        headers:
+          content-type: "application/json"
+        body:
+          status: "healthy"
+          cache_hit_rate: 0.95
+          active_sessions: 1523
+          checks:
+            database: "connected"
+            redis: "connected"
+            ldap: "connected"
+
+  - endpoint_id: "HC004"
+    url: "https://api.inventory.example.com/health"
+    name: "Inventory Service Health"
+    service: "inventory-service"
+    environment: "production"
+    region: "us-west-2"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 503
+        response_time_ms: 30000
+        status: "DEGRADED"
+        error: "Service timeout"
+        headers:
+          content-type: "text/plain"
+          retry-after: "60"
+        body: "Service Unavailable - High Load"
+
+  - endpoint_id: "HC005"
+    url: "https://api.notification.example.com/health"
+    name: "Notification Service Health"
+    service: "notification-service"
+    environment: "production"
+    region: "us-east-1"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 200
+        response_time_ms: 128
+        status: "DEGRADED"
+        warning: "High queue size"
+        headers:
+          content-type: "application/json"
+        body:
+          status: "degraded"
+          queue_size: 15000
+          queue_warning_threshold: 10000
+          email_provider: "connected"
+          sms_provider: "degraded"
+
+  - endpoint_id: "HC006"
+    url: "https://api-gateway.example.com/health"
+    name: "API Gateway Health"
+    service: "api-gateway"
+    environment: "production"
+    region: "us-east-1"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 200
+        response_time_ms: 25
+        status: "UP"
+        body:
+          status: "healthy"
+          total_requests_per_sec: 2450
+          upstream_services:
+            payment: "UP"
+            order: "DOWN"
+            user: "UP"
+            inventory: "DEGRADED"
+            notification: "DEGRADED"
+
+  - endpoint_id: "HC007"
+    url: "https://api.billing.example.com/health"
+    name: "Billing Service Health"
+    service: "billing-service"
+    environment: "production"
+    region: "eu-west-1"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 200
+        response_time_ms: 89
+        status: "UP"
+        body:
+          status: "healthy"
+          pending_invoices: 234
+          checks:
+            database: "connected"
+            payment_gateway: "connected"
+
+  - endpoint_id: "HC008"
+    url: "https://api.auth.example.com/health"
+    name: "Auth Service Health"
+    service: "auth-service"
+    environment: "production"
+    region: "us-east-1"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 200
+        response_time_ms: 38
+        status: "UP"
+        body:
+          status: "healthy"
+          token_cache_hit_rate: 0.98
+          active_tokens: 5423
+          checks:
+            database: "connected"
+            redis: "connected"
+            oauth_provider: "connected"
+
+  - endpoint_id: "HC009"
+    url: "https://api.analytics.example.com/health"
+    name: "Analytics Service Health"
+    service: "analytics-service"
+    environment: "production"
+    region: "us-west-2"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 429
+        response_time_ms: 12
+        status: "RATE_LIMITED"
+        error: "Rate limit exceeded"
+        headers:
+          x-ratelimit-limit: "1000"
+          x-ratelimit-remaining: "0"
+          x-ratelimit-reset: "1701344745"
+          retry-after: "60"
+
+  - endpoint_id: "HC010"
+    url: "https://api.reporting.example.com/health"
+    name: "Reporting Service Health"
+    service: "reporting-service"
+    environment: "production"
+    region: "eu-central-1"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 404
+        response_time_ms: 25
+        status: "ENDPOINT_NOT_FOUND"
+        error: "Health endpoint not configured"
+        body: "Not Found"
+
+  - endpoint_id: "HC011"
+    url: "https://api.search.example.com/health"
+    name: "Search Service Health"
+    service: "search-service"
+    environment: "production"
+    region: "us-east-1"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 200
+        response_time_ms: 156
+        status: "UP"
+        body:
+          status: "healthy"
+          elasticsearch_cluster: "green"
+          index_count: 45
+          document_count: 12456789
+
+  - endpoint_id: "HC012"
+    url: "https://api.media.example.com/health"
+    name: "Media Service Health"
+    service: "media-service"
+    environment: "production"
+    region: "us-west-2"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 200
+        response_time_ms: 245
+        status: "DEGRADED"
+        warning: "High CDN cache miss rate"
+        body:
+          status: "degraded"
+          cdn_cache_hit_rate: 0.45
+          storage_available_gb: 125
+
+  - endpoint_id: "HC013"
+    url: "https://api.webhook.example.com/health"
+    name: "Webhook Service Health"
+    service: "webhook-service"
+    environment: "production"
+    region: "us-east-1"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 200
+        response_time_ms: 67
+        status: "UP"
+        body:
+          status: "healthy"
+          pending_webhooks: 234
+          retry_queue_size: 45
+
+  - endpoint_id: "HC014"
+    url: "https://api.scheduling.example.com/health"
+    name: "Scheduling Service Health"
+    service: "scheduling-service"
+    environment: "production"
+    region: "eu-west-1"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 200
+        response_time_ms: 43
+        status: "UP"
+        body:
+          status: "healthy"
+          scheduled_jobs: 567
+          running_jobs: 12
+
+  - endpoint_id: "HC015"
+    url: "https://api.cache.example.com/health"
+    name: "Cache Service Health"
+    service: "cache-service"
+    environment: "production"
+    region: "us-east-1"
+    method: "GET"
+    expected_status_code: 200
+    checks:
+      - timestamp: "2025-12-01T03:06:00Z"
+        status_code: 200
+        response_time_ms: 8
+        status: "UP"
+        body:
+          status: "healthy"
+          memory_used_percent: 67
+          hit_rate: 0.94
+          keys_count: 125678

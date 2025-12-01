@@ -1,0 +1,36 @@
+# Prometheus Alert Rules
+alerts:
+  - name: "HighCPUUsage"
+    expression: "node_cpu_usage > 80"
+    severity: "critical"
+    for_duration: "5m"
+    description: "CPU usage is above 80%"
+    runbook: "https://docs.example.com/alerts/high-cpu"
+
+  - name: "HighMemoryUsage"
+    expression: "node_memory_usage_bytes / 1024 / 1024 / 1024 > 55"
+    severity: "warning"
+    for_duration: "10m"
+    description: "Memory usage is above 55GB"
+    runbook: "https://docs.example.com/alerts/high-memory"
+
+  - name: "PodCrashLooping"
+    expression: "rate(container_last_seen[15m]) < 0.5"
+    severity: "critical"
+    for_duration: "1m"
+    description: "Pod is crash looping"
+    runbook: "https://docs.example.com/alerts/pod-crash"
+
+  - name: "ServiceDown"
+    expression: "up == 0"
+    severity: "critical"
+    for_duration: "1m"
+    description: "Service is down"
+    runbook: "https://docs.example.com/alerts/service-down"
+
+  - name: "HighErrorRate"
+    expression: "rate(http_requests_total{status=~'5..'}[5m]) > 0.05"
+    severity: "warning"
+    for_duration: "5m"
+    description: "Error rate is above 5%"
+    runbook: "https://docs.example.com/alerts/high-error-rate"

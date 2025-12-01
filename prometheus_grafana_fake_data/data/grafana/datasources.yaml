@@ -1,0 +1,41 @@
+# Grafana Datasources
+datasources:
+  - name: "Prometheus"
+    type: "prometheus"
+    access: "proxy"
+    url: "http://prometheus:9090"
+    is_default: true
+    json_data:
+      timeInterval: "30s"
+
+  - name: "Loki"
+    type: "loki"
+    access: "proxy"
+    url: "http://loki:3100"
+    json_data:
+      maxLines: 1000
+
+  - name: "Jaeger"
+    type: "jaeger"
+    access: "proxy"
+    url: "http://jaeger:16686"
+    json_data:
+      tracesToLogs:
+        datasourceUid: "loki_uid"
+
+  - name: "Elasticsearch"
+    type: "elasticsearch"
+    access: "proxy"
+    url: "http://elasticsearch:9200"
+    json_data:
+      esVersion: 8
+      timeField: "@timestamp"
+      logMessageField: "message"
+      logLevelField: "level"
+
+  - name: "CloudWatch"
+    type: "cloudwatch"
+    access: "proxy"
+    json_data:
+      authType: "default"
+      defaultRegion: "us-east-1"

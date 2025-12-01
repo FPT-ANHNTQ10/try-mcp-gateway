@@ -1,0 +1,274 @@
+# Application Area Performance Metrics (Prometheus format)
+# Simulates metrics collected every 5 minutes for multiple application areas
+# Last updated: 2025-11-30
+
+application_areas:
+  payment:
+    description: "Payment processing and transaction management"
+    criticality: "HIGH"
+    sla_response_time_ms: 500
+    metrics:
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 250.5
+        response_time_p50_ms: 125.3
+        response_time_p95_ms: 450.2
+        response_time_p99_ms: 850.7
+        error_count: 12
+        success_count: 5088
+        throughput_rps: 84.8
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 245.2
+        response_time_p50_ms: 120.5
+        response_time_p95_ms: 435.8
+        response_time_p99_ms: 820.3
+        error_count: 10
+        success_count: 5050
+        throughput_rps: 83.5
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 240.8
+        response_time_p50_ms: 118.2
+        response_time_p95_ms: 420.5
+        response_time_p99_ms: 795.8
+        error_count: 8
+        success_count: 5020
+        throughput_rps: 82.2
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 235.5
+        response_time_p50_ms: 115.8
+        response_time_p95_ms: 410.2
+        response_time_p99_ms: 780.5
+        error_count: 6
+        success_count: 4985
+        throughput_rps: 81.0
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 230.2
+        response_time_p50_ms: 112.5
+        response_time_p95_ms: 400.8
+        response_time_p99_ms: 765.2
+        error_count: 5
+        success_count: 4950
+        throughput_rps: 80.5
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 225.8
+        response_time_p50_ms: 110.2
+        response_time_p95_ms: 395.5
+        response_time_p99_ms: 750.8
+        error_count: 4
+        success_count: 4920
+        throughput_rps: 79.8
+
+  order:
+    description: "Order creation, management, and fulfillment"
+    criticality: "HIGH"
+    sla_response_time_ms: 800
+    metrics:
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 180.3
+        response_time_p50_ms: 280.5
+        response_time_p95_ms: 680.2
+        response_time_p99_ms: 1250.8
+        error_count: 18
+        success_count: 3582
+        throughput_rps: 59.7
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 175.8
+        response_time_p50_ms: 270.2
+        response_time_p95_ms: 660.5
+        response_time_p99_ms: 1200.5
+        error_count: 15
+        success_count: 3550
+        throughput_rps: 58.5
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 170.5
+        response_time_p50_ms: 265.8
+        response_time_p95_ms: 640.2
+        response_time_p99_ms: 1150.2
+        error_count: 12
+        success_count: 3515
+        throughput_rps: 57.2
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 165.2
+        response_time_p50_ms: 255.5
+        response_time_p95_ms: 625.8
+        response_time_p99_ms: 1100.8
+        error_count: 10
+        success_count: 3480
+        throughput_rps: 56.0
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 160.8
+        response_time_p50_ms: 250.2
+        response_time_p95_ms: 610.5
+        response_time_p99_ms: 1050.5
+        error_count: 8
+        success_count: 3445
+        throughput_rps: 55.5
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 155.5
+        response_time_p50_ms: 245.8
+        response_time_p95_ms: 595.2
+        response_time_p99_ms: 1000.2
+        error_count: 6
+        success_count: 3410
+        throughput_rps: 54.8
+
+  user:
+    description: "User authentication, profile management, and sessions"
+    criticality: "HIGH"
+    sla_response_time_ms: 300
+    metrics:
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 420.5
+        response_time_p50_ms: 85.2
+        response_time_p95_ms: 180.5
+        response_time_p99_ms: 350.8
+        error_count: 8
+        success_count: 8402
+        throughput_rps: 140.2
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 415.2
+        response_time_p50_ms: 82.5
+        response_time_p95_ms: 175.8
+        response_time_p99_ms: 340.5
+        error_count: 6
+        success_count: 8360
+        throughput_rps: 138.5
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 408.8
+        response_time_p50_ms: 80.8
+        response_time_p95_ms: 170.2
+        response_time_p99_ms: 330.2
+        error_count: 5
+        success_count: 8320
+        throughput_rps: 137.0
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 400.5
+        response_time_p50_ms: 78.5
+        response_time_p95_ms: 165.5
+        response_time_p99_ms: 320.8
+        error_count: 4
+        success_count: 8280
+        throughput_rps: 135.5
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 395.2
+        response_time_p50_ms: 76.2
+        response_time_p95_ms: 160.8
+        response_time_p99_ms: 310.5
+        error_count: 3
+        success_count: 8240
+        throughput_rps: 134.0
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 388.8
+        response_time_p50_ms: 74.5
+        response_time_p95_ms: 155.2
+        response_time_p99_ms: 300.2
+        error_count: 2
+        success_count: 8200
+        throughput_rps: 132.8
+
+  inventory:
+    description: "Inventory tracking, stock management, and warehouse operations"
+    criticality: "MEDIUM"
+    sla_response_time_ms: 400
+    metrics:
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 320.5
+        response_time_p50_ms: 95.2
+        response_time_p95_ms: 250.8
+        response_time_p99_ms: 480.5
+        error_count: 5
+        success_count: 6405
+        throughput_rps: 106.8
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 315.8
+        response_time_p50_ms: 92.5
+        response_time_p95_ms: 245.5
+        response_time_p99_ms: 465.2
+        error_count: 4
+        success_count: 6370
+        throughput_rps: 105.5
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 310.2
+        response_time_p50_ms: 90.8
+        response_time_p95_ms: 240.2
+        response_time_p99_ms: 450.8
+        error_count: 3
+        success_count: 6335
+        throughput_rps: 104.2
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 305.5
+        response_time_p50_ms: 88.2
+        response_time_p95_ms: 235.8
+        response_time_p99_ms: 435.5
+        error_count: 2
+        success_count: 6300
+        throughput_rps: 103.0
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 300.8
+        response_time_p50_ms: 85.5
+        response_time_p95_ms: 230.5
+        response_time_p99_ms: 420.2
+        error_count: 2
+        success_count: 6265
+        throughput_rps: 101.8
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 295.2
+        response_time_p50_ms: 82.8
+        response_time_p95_ms: 225.2
+        response_time_p99_ms: 405.8
+        error_count: 1
+        success_count: 6230
+        throughput_rps: 100.5
+
+  notification:
+    description: "Email, SMS, push notifications, and alerts"
+    criticality: "MEDIUM"
+    sla_response_time_ms: 1000
+    metrics:
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 85.5
+        response_time_p50_ms: 180.5
+        response_time_p95_ms: 550.2
+        response_time_p99_ms: 950.8
+        error_count: 15
+        success_count: 1695
+        throughput_rps: 28.5
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 82.8
+        response_time_p50_ms: 175.2
+        response_time_p95_ms: 530.8
+        response_time_p99_ms: 920.5
+        error_count: 12
+        success_count: 1668
+        throughput_rps: 27.8
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 80.2
+        response_time_p50_ms: 170.8
+        response_time_p95_ms: 510.5
+        response_time_p99_ms: 890.2
+        error_count: 10
+        success_count: 1640
+        throughput_rps: 27.0
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 78.5
+        response_time_p50_ms: 165.5
+        response_time_p95_ms: 490.2
+        response_time_p99_ms: 860.8
+        error_count: 8
+        success_count: 1612
+        throughput_rps: 26.5
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 75.8
+        response_time_p50_ms: 160.2
+        response_time_p95_ms: 475.8
+        response_time_p99_ms: 830.5
+        error_count: 6
+        success_count: 1585
+        throughput_rps: 25.8
+      - timestamp: "2025-12-01T03:06:00Z"
+        request_rate: 72.5
+        response_time_p50_ms: 155.8
+        response_time_p95_ms: 460.5
+        response_time_p99_ms: 800.2
+        error_count: 5
+        success_count: 1558
+        throughput_rps: 25.2

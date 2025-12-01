@@ -171,6 +171,33 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
 
+  # ──────────────────────────────────────────────────────────────────────
+  # Monitoring MCP Server - Prometheus/Grafana Fake Data for Testing
+  # ──────────────────────────────────────────────────────────────────────
+  monitoring-mcp:
+    build:
+      context: ./prometheus_grafana_fake_data
+      dockerfile: Dockerfile.prod
+    image: monitoring-mcp-server:latest
+    container_name: monitoring-mcp-server
+    restart: unless-stopped
+    ports:
+      - "8001:8001" # MCP HTTP/SSE server
+    networks: [mcpnet]
+    volumes:
+      # Mount config file for easy updates without rebuild
+      - ./prometheus_grafana_fake_data/config.yaml:/app/config.yaml:ro
+      # Mount logs directory to persist logs
+      - ./prometheus_grafana_fake_data/logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
   ###############################################################################
   #  DATABASES - enable ONE of these blocks and adjust DATABASE_URL
   ###############################################################################

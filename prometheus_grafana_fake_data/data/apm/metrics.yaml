@@ -1,0 +1,173 @@
+# APM Metrics (Prometheus format)
+# Service-level metrics for Application Performance Monitoring
+# Includes latency distributions, error rates, and throughput
+# Last updated: 2025-11-30
+
+apm_metrics:
+  - timestamp: "2025-12-01T03:06:00Z"
+    service: "api-gateway"
+    operation: "POST /api/v1/payments"
+    instance: "api-gateway-pod-5d7b8c9f4-xk2p9"
+    metrics:
+      trace_duration_p50_ms: 250.5
+      trace_duration_p95_ms: 450.2
+      trace_duration_p99_ms: 850.7
+      error_rate_percent: 2.5
+      request_rate_per_sec: 150.5
+      success_count: 8955
+      error_count: 45
+      timeout_count: 12
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    service: "api-gateway"
+    operation: "POST /api/v1/payments"
+    instance: "api-gateway-pod-5d7b8c9f4-xk2p9"
+    metrics:
+      trace_duration_p50_ms: 245.2
+      trace_duration_p95_ms: 442.8
+      trace_duration_p99_ms: 820.4
+      error_rate_percent: 2.2
+      request_rate_per_sec: 148.3
+      success_count: 8920
+      error_count: 38
+      timeout_count: 10
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    service: "payment-service"
+    operation: "ProcessPayment"
+    instance: "payment-service-pod-7d8f9c1e2-ab3c4"
+    metrics:
+      trace_duration_p50_ms: 180.5
+      trace_duration_p95_ms: 420.5
+      trace_duration_p99_ms: 750.2
+      error_rate_percent: 3.5
+      request_rate_per_sec: 85.2
+      success_count: 5050
+      error_count: 180
+      timeout_count: 25
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    service: "payment-service"
+    operation: "ProcessPayment"
+    instance: "payment-service-pod-7d8f9c1e2-ab3c4"
+    metrics:
+      trace_duration_p50_ms: 175.2
+      trace_duration_p95_ms: 405.8
+      trace_duration_p99_ms: 720.5
+      error_rate_percent: 3.2
+      request_rate_per_sec: 82.8
+      success_count: 4980
+      error_count: 165
+      timeout_count: 22
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    service: "order-service"
+    operation: "CreateOrder"
+    instance: "order-service-pod-4e5f6g7h8-ij9k0"
+    metrics:
+      trace_duration_p50_ms: 350.5
+      trace_duration_p95_ms: 850.5
+      trace_duration_p99_ms: 1250.8
+      error_rate_percent: 4.2
+      request_rate_per_sec: 65.8
+      success_count: 3850
+      error_count: 168
+      timeout_count: 35
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    service: "order-service"
+    operation: "CreateOrder"
+    instance: "order-service-pod-4e5f6g7h8-ij9k0"
+    metrics:
+      trace_duration_p50_ms: 340.2
+      trace_duration_p95_ms: 825.3
+      trace_duration_p99_ms: 1200.5
+      error_rate_percent: 3.8
+      request_rate_per_sec: 63.5
+      success_count: 3780
+      error_count: 150
+      timeout_count: 30
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    service: "user-service"
+    operation: "AuthenticateUser"
+    instance: "user-service-pod-1a2b3c4d5-ef6g7"
+    metrics:
+      trace_duration_p50_ms: 120.5
+      trace_duration_p95_ms: 280.5
+      trace_duration_p99_ms: 450.2
+      error_rate_percent: 1.2
+      request_rate_per_sec: 380.5
+      success_count: 22800
+      error_count: 280
+      timeout_count: 15
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    service: "user-service"
+    operation: "AuthenticateUser"
+    instance: "user-service-pod-1a2b3c4d5-ef6g7"
+    metrics:
+      trace_duration_p50_ms: 115.8
+      trace_duration_p95_ms: 270.8
+      trace_duration_p99_ms: 435.5
+      error_rate_percent: 1.0
+      request_rate_per_sec: 375.2
+      success_count: 22500
+      error_count: 230
+      timeout_count: 12
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    service: "inventory-service"
+    operation: "CheckStock"
+    instance: "inventory-service-pod-8h9i0j1k2-lm3n4"
+    metrics:
+      trace_duration_p50_ms: 35.5
+      trace_duration_p95_ms: 95.5
+      trace_duration_p99_ms: 180.2
+      error_rate_percent: 0.5
+      request_rate_per_sec: 450.5
+      success_count: 27000
+      error_count: 135
+      timeout_count: 8
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    service: "inventory-service"
+    operation: "CheckStock"
+    instance: "inventory-service-pod-8h9i0j1k2-lm3n4"
+    metrics:
+      trace_duration_p50_ms: 32.8
+      trace_duration_p95_ms: 90.8
+      trace_duration_p99_ms: 170.5
+      error_rate_percent: 0.4
+      request_rate_per_sec: 445.2
+      success_count: 26700
+      error_count: 108
+      timeout_count: 5
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    service: "notification-service"
+    operation: "SendEmail"
+    instance: "notification-service-pod-5o6p7q8r9-st0u1"
+    metrics:
+      trace_duration_p50_ms: 180.5
+      trace_duration_p95_ms: 480.5
+      trace_duration_p99_ms: 850.2
+      error_rate_percent: 5.5
+      request_rate_per_sec: 45.2
+      success_count: 2550
+      error_count: 150
+      timeout_count: 25
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    service: "notification-service"
+    operation: "SendEmail"
+    instance: "notification-service-pod-5o6p7q8r9-st0u1"
+    metrics:
+      trace_duration_p50_ms: 175.2
+      trace_duration_p95_ms: 460.8
+      trace_duration_p99_ms: 820.5
+      error_rate_percent: 5.2
+      request_rate_per_sec: 43.8
+      success_count: 2480
+      error_count: 135
+      timeout_count: 22

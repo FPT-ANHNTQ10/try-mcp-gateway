@@ -1,0 +1,653 @@
+# Prometheus Infrastructure Metrics
+# Node-level metrics for CPU, Memory, Disk, Network
+# Simulates real Kubernetes cluster monitoring
+# Last updated: 2025-11-30
+
+server_metrics:
+  # ============================================
+  # K8S-NODE-01 (Worker Node - Heavy workload)
+  # ============================================
+  - timestamp: "2025-12-01T03:06:00Z"
+    node: "k8s-node-01"
+    instance: "10.0.1.10:9100"
+    job: "node-exporter"
+    region: "us-east-1"
+    availability_zone: "us-east-1a"
+    metrics:
+      # CPU Metrics
+      cpu_usage_percent: 72.5
+      cpu_user_percent: 55.2
+      cpu_system_percent: 12.3
+      cpu_iowait_percent: 5.0
+      cpu_steal_percent: 0.0
+      cpu_cores: 16
+      load_average_1m: 11.52
+      load_average_5m: 10.85
+      load_average_15m: 9.72
+      # Memory Metrics
+      memory_total_bytes: 68719476736 # 64GB
+      memory_used_bytes: 52213170176 # ~48.6GB
+      memory_free_bytes: 8589934592 # ~8GB
+      memory_cached_bytes: 7916372992 # ~7.4GB
+      memory_buffers_bytes: 1073741824 # ~1GB
+      memory_usage_percent: 76.0
+      memory_available_bytes: 16503611392
+      swap_total_bytes: 8589934592
+      swap_used_bytes: 214748364
+      swap_usage_percent: 2.5
+      # Disk Metrics
+      disk_total_bytes: 1099511627776 # 1TB
+      disk_used_bytes: 549755813888 # ~512GB
+      disk_free_bytes: 549755813888
+      disk_usage_percent: 50.0
+      disk_read_bytes_per_sec: 52428800 # 50MB/s
+      disk_write_bytes_per_sec: 31457280 # 30MB/s
+      disk_iops_read: 1250
+      disk_iops_write: 850
+      disk_io_time_percent: 35.5
+      # Network Metrics
+      network_receive_bytes_per_sec: 125829120 # 120MB/s
+      network_transmit_bytes_per_sec: 83886080 # 80MB/s
+      network_receive_packets_per_sec: 95000
+      network_transmit_packets_per_sec: 72000
+      network_receive_errors: 0
+      network_transmit_errors: 0
+      network_receive_drops: 12
+      network_transmit_drops: 5
+      tcp_connections_established: 2450
+      tcp_connections_time_wait: 125
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    node: "k8s-node-01"
+    instance: "10.0.1.10:9100"
+    job: "node-exporter"
+    region: "us-east-1"
+    availability_zone: "us-east-1a"
+    metrics:
+      cpu_usage_percent: 68.2
+      cpu_user_percent: 52.5
+      cpu_system_percent: 11.2
+      cpu_iowait_percent: 4.5
+      cpu_steal_percent: 0.0
+      cpu_cores: 16
+      load_average_1m: 10.91
+      load_average_5m: 10.25
+      load_average_15m: 9.55
+      memory_total_bytes: 68719476736
+      memory_used_bytes: 50432503808
+      memory_free_bytes: 9126805504
+      memory_cached_bytes: 8160437248
+      memory_buffers_bytes: 1073741824
+      memory_usage_percent: 73.4
+      memory_available_bytes: 17361879040
+      swap_total_bytes: 8589934592
+      swap_used_bytes: 193273528
+      swap_usage_percent: 2.3
+      disk_total_bytes: 1099511627776
+      disk_used_bytes: 548682072064
+      disk_free_bytes: 550829555712
+      disk_usage_percent: 49.9
+      disk_read_bytes_per_sec: 48234496
+      disk_write_bytes_per_sec: 28311552
+      disk_iops_read: 1180
+      disk_iops_write: 795
+      disk_io_time_percent: 32.8
+      network_receive_bytes_per_sec: 118489088
+      network_transmit_bytes_per_sec: 79691776
+      network_receive_packets_per_sec: 90500
+      network_transmit_packets_per_sec: 68500
+      network_receive_errors: 0
+      network_transmit_errors: 0
+      network_receive_drops: 10
+      network_transmit_drops: 4
+      tcp_connections_established: 2380
+      tcp_connections_time_wait: 118
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    node: "k8s-node-01"
+    instance: "10.0.1.10:9100"
+    job: "node-exporter"
+    region: "us-east-1"
+    availability_zone: "us-east-1a"
+    metrics:
+      cpu_usage_percent: 65.8
+      cpu_user_percent: 50.2
+      cpu_system_percent: 10.8
+      cpu_iowait_percent: 4.8
+      cpu_steal_percent: 0.0
+      cpu_cores: 16
+      load_average_1m: 10.53
+      load_average_5m: 9.85
+      load_average_15m: 9.35
+      memory_total_bytes: 68719476736
+      memory_used_bytes: 49275666432
+      memory_free_bytes: 9663676416
+      memory_cached_bytes: 8780124160
+      memory_buffers_bytes: 1073741824
+      memory_usage_percent: 71.7
+      memory_available_bytes: 18517541888
+      swap_total_bytes: 8589934592
+      swap_used_bytes: 171798692
+      swap_usage_percent: 2.0
+      disk_total_bytes: 1099511627776
+      disk_used_bytes: 547608330240
+      disk_free_bytes: 551903297536
+      disk_usage_percent: 49.8
+      disk_read_bytes_per_sec: 45088768
+      disk_write_bytes_per_sec: 26214400
+      disk_iops_read: 1100
+      disk_iops_write: 740
+      disk_io_time_percent: 30.5
+      network_receive_bytes_per_sec: 112197632
+      network_transmit_bytes_per_sec: 75497472
+      network_receive_packets_per_sec: 86000
+      network_transmit_packets_per_sec: 65000
+      network_receive_errors: 0
+      network_transmit_errors: 0
+      network_receive_drops: 8
+      network_transmit_drops: 3
+      tcp_connections_established: 2310
+      tcp_connections_time_wait: 110
+
+  # ============================================
+  # K8S-NODE-02 (Worker Node - Medium workload)
+  # ============================================
+  - timestamp: "2025-12-01T03:06:00Z"
+    node: "k8s-node-02"
+    instance: "10.0.1.11:9100"
+    job: "node-exporter"
+    region: "us-east-1"
+    availability_zone: "us-east-1b"
+    metrics:
+      cpu_usage_percent: 45.2
+      cpu_user_percent: 35.5
+      cpu_system_percent: 7.2
+      cpu_iowait_percent: 2.5
+      cpu_steal_percent: 0.0
+      cpu_cores: 16
+      load_average_1m: 7.23
+      load_average_5m: 6.85
+      load_average_15m: 6.42
+      memory_total_bytes: 68719476736
+      memory_used_bytes: 38482075648
+      memory_free_bytes: 17179869184
+      memory_cached_bytes: 12057485312
+      memory_buffers_bytes: 1073741824
+      memory_usage_percent: 56.0
+      memory_available_bytes: 29311156224
+      swap_total_bytes: 8589934592
+      swap_used_bytes: 0
+      swap_usage_percent: 0.0
+      disk_total_bytes: 1099511627776
+      disk_used_bytes: 384829882368
+      disk_free_bytes: 714681745408
+      disk_usage_percent: 35.0
+      disk_read_bytes_per_sec: 31457280
+      disk_write_bytes_per_sec: 20971520
+      disk_iops_read: 780
+      disk_iops_write: 520
+      disk_io_time_percent: 18.5
+      network_receive_bytes_per_sec: 73400320
+      network_transmit_bytes_per_sec: 52428800
+      network_receive_packets_per_sec: 56000
+      network_transmit_packets_per_sec: 42000
+      network_receive_errors: 0
+      network_transmit_errors: 0
+      network_receive_drops: 2
+      network_transmit_drops: 1
+      tcp_connections_established: 1580
+      tcp_connections_time_wait: 65
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    node: "k8s-node-02"
+    instance: "10.0.1.11:9100"
+    job: "node-exporter"
+    region: "us-east-1"
+    availability_zone: "us-east-1b"
+    metrics:
+      cpu_usage_percent: 42.8
+      cpu_user_percent: 33.2
+      cpu_system_percent: 6.8
+      cpu_iowait_percent: 2.8
+      cpu_steal_percent: 0.0
+      cpu_cores: 16
+      load_average_1m: 6.85
+      load_average_5m: 6.52
+      load_average_15m: 6.28
+      memory_total_bytes: 68719476736
+      memory_used_bytes: 37580963840
+      memory_free_bytes: 17716740096
+      memory_cached_bytes: 12421867520
+      memory_buffers_bytes: 1073741824
+      memory_usage_percent: 54.7
+      memory_available_bytes: 30212268032
+      swap_total_bytes: 8589934592
+      swap_used_bytes: 0
+      swap_usage_percent: 0.0
+      disk_total_bytes: 1099511627776
+      disk_used_bytes: 383756140544
+      disk_free_bytes: 715755487232
+      disk_usage_percent: 34.9
+      disk_read_bytes_per_sec: 29360128
+      disk_write_bytes_per_sec: 19922944
+      disk_iops_read: 735
+      disk_iops_write: 495
+      disk_io_time_percent: 17.2
+      network_receive_bytes_per_sec: 70254592
+      network_transmit_bytes_per_sec: 50331648
+      network_receive_packets_per_sec: 53500
+      network_transmit_packets_per_sec: 40200
+      network_receive_errors: 0
+      network_transmit_errors: 0
+      network_receive_drops: 1
+      network_transmit_drops: 0
+      tcp_connections_established: 1520
+      tcp_connections_time_wait: 58
+
+  # ============================================
+  # K8S-NODE-03 (Worker Node - Light workload)
+  # ============================================
+  - timestamp: "2025-12-01T03:06:00Z"
+    node: "k8s-node-03"
+    instance: "10.0.1.12:9100"
+    job: "node-exporter"
+    region: "us-east-1"
+    availability_zone: "us-east-1c"
+    metrics:
+      cpu_usage_percent: 28.5
+      cpu_user_percent: 22.2
+      cpu_system_percent: 4.5
+      cpu_iowait_percent: 1.8
+      cpu_steal_percent: 0.0
+      cpu_cores: 16
+      load_average_1m: 4.56
+      load_average_5m: 4.25
+      load_average_15m: 4.12
+      memory_total_bytes: 68719476736
+      memory_used_bytes: 27487790080
+      memory_free_bytes: 25769803776
+      memory_cached_bytes: 14461882880
+      memory_buffers_bytes: 1073741824
+      memory_usage_percent: 40.0
+      memory_available_bytes: 40305428480
+      swap_total_bytes: 8589934592
+      swap_used_bytes: 0
+      swap_usage_percent: 0.0
+      disk_total_bytes: 1099511627776
+      disk_used_bytes: 274877906944
+      disk_free_bytes: 824633720832
+      disk_usage_percent: 25.0
+      disk_read_bytes_per_sec: 15728640
+      disk_write_bytes_per_sec: 10485760
+      disk_iops_read: 420
+      disk_iops_write: 280
+      disk_io_time_percent: 8.5
+      network_receive_bytes_per_sec: 41943040
+      network_transmit_bytes_per_sec: 31457280
+      network_receive_packets_per_sec: 32000
+      network_transmit_packets_per_sec: 24000
+      network_receive_errors: 0
+      network_transmit_errors: 0
+      network_receive_drops: 0
+      network_transmit_drops: 0
+      tcp_connections_established: 920
+      tcp_connections_time_wait: 28
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    node: "k8s-node-03"
+    instance: "10.0.1.12:9100"
+    job: "node-exporter"
+    region: "us-east-1"
+    availability_zone: "us-east-1c"
+    metrics:
+      cpu_usage_percent: 26.2
+      cpu_user_percent: 20.5
+      cpu_system_percent: 4.2
+      cpu_iowait_percent: 1.5
+      cpu_steal_percent: 0.0
+      cpu_cores: 16
+      load_average_1m: 4.19
+      load_average_5m: 4.02
+      load_average_15m: 3.95
+      memory_total_bytes: 68719476736
+      memory_used_bytes: 26843545600
+      memory_free_bytes: 26306048000
+      memory_cached_bytes: 14569883136
+      memory_buffers_bytes: 1073741824
+      memory_usage_percent: 39.1
+      memory_available_bytes: 40949672960
+      swap_total_bytes: 8589934592
+      swap_used_bytes: 0
+      swap_usage_percent: 0.0
+      disk_total_bytes: 1099511627776
+      disk_used_bytes: 273804165120
+      disk_free_bytes: 825707462656
+      disk_usage_percent: 24.9
+      disk_read_bytes_per_sec: 14680064
+      disk_write_bytes_per_sec: 9961472
+      disk_iops_read: 392
+      disk_iops_write: 265
+      disk_io_time_percent: 7.8
+      network_receive_bytes_per_sec: 39845888
+      network_transmit_bytes_per_sec: 29884416
+      network_receive_packets_per_sec: 30500
+      network_transmit_packets_per_sec: 22800
+      network_receive_errors: 0
+      network_transmit_errors: 0
+      network_receive_drops: 0
+      network_transmit_drops: 0
+      tcp_connections_established: 885
+      tcp_connections_time_wait: 25
+
+  # ============================================
+  # K8S-MASTER-01 (Control Plane)
+  # ============================================
+  - timestamp: "2025-12-01T03:06:00Z"
+    node: "k8s-master-01"
+    instance: "10.0.1.5:9100"
+    job: "node-exporter"
+    region: "us-east-1"
+    availability_zone: "us-east-1a"
+    role: "control-plane"
+    metrics:
+      cpu_usage_percent: 35.8
+      cpu_user_percent: 28.2
+      cpu_system_percent: 5.8
+      cpu_iowait_percent: 1.8
+      cpu_steal_percent: 0.0
+      cpu_cores: 8
+      load_average_1m: 2.86
+      load_average_5m: 2.72
+      load_average_15m: 2.58
+      memory_total_bytes: 34359738368
+      memory_used_bytes: 20615843840
+      memory_free_bytes: 6871947264
+      memory_cached_bytes: 5798205440
+      memory_buffers_bytes: 1073741824
+      memory_usage_percent: 60.0
+      memory_available_bytes: 13672894464
+      swap_total_bytes: 4294967296
+      swap_used_bytes: 0
+      swap_usage_percent: 0.0
+      disk_total_bytes: 549755813888
+      disk_used_bytes: 164926744576
+      disk_free_bytes: 384829069312
+      disk_usage_percent: 30.0
+      disk_read_bytes_per_sec: 10485760
+      disk_write_bytes_per_sec: 8388608
+      disk_iops_read: 280
+      disk_iops_write: 220
+      disk_io_time_percent: 12.5
+      network_receive_bytes_per_sec: 31457280
+      network_transmit_bytes_per_sec: 26214400
+      network_receive_packets_per_sec: 24000
+      network_transmit_packets_per_sec: 20000
+      network_receive_errors: 0
+      network_transmit_errors: 0
+      network_receive_drops: 0
+      network_transmit_drops: 0
+      tcp_connections_established: 850
+      tcp_connections_time_wait: 45
+      etcd_has_leader: true
+      etcd_leader_changes_24h: 0
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    node: "k8s-master-01"
+    instance: "10.0.1.5:9100"
+    job: "node-exporter"
+    region: "us-east-1"
+    availability_zone: "us-east-1a"
+    role: "control-plane"
+    metrics:
+      cpu_usage_percent: 33.5
+      cpu_user_percent: 26.5
+      cpu_system_percent: 5.5
+      cpu_iowait_percent: 1.5
+      cpu_steal_percent: 0.0
+      cpu_cores: 8
+      load_average_1m: 2.68
+      load_average_5m: 2.58
+      load_average_15m: 2.48
+      memory_total_bytes: 34359738368
+      memory_used_bytes: 20186144768
+      memory_free_bytes: 7301646336
+      memory_cached_bytes: 5798205440
+      memory_buffers_bytes: 1073741824
+      memory_usage_percent: 58.7
+      memory_available_bytes: 14073593856
+      swap_total_bytes: 4294967296
+      swap_used_bytes: 0
+      swap_usage_percent: 0.0
+      disk_total_bytes: 549755813888
+      disk_used_bytes: 163853002752
+      disk_free_bytes: 385902811136
+      disk_usage_percent: 29.8
+      disk_read_bytes_per_sec: 9961472
+      disk_write_bytes_per_sec: 7864320
+      disk_iops_read: 265
+      disk_iops_write: 208
+      disk_io_time_percent: 11.8
+      network_receive_bytes_per_sec: 29884416
+      network_transmit_bytes_per_sec: 24903680
+      network_receive_packets_per_sec: 22800
+      network_transmit_packets_per_sec: 19000
+      network_receive_errors: 0
+      network_transmit_errors: 0
+      network_receive_drops: 0
+      network_transmit_drops: 0
+      tcp_connections_established: 825
+      tcp_connections_time_wait: 42
+      etcd_has_leader: true
+      etcd_leader_changes_24h: 0
+
+  # ============================================
+  # DB-PRIMARY (PostgreSQL Primary)
+  # ============================================
+  - timestamp: "2025-12-01T03:06:00Z"
+    node: "db-primary"
+    instance: "10.0.2.10:9100"
+    job: "node-exporter"
+    region: "us-east-1"
+    availability_zone: "us-east-1a"
+    role: "database"
+    metrics:
+      cpu_usage_percent: 58.5
+      cpu_user_percent: 45.2
+      cpu_system_percent: 8.5
+      cpu_iowait_percent: 4.8
+      cpu_steal_percent: 0.0
+      cpu_cores: 32
+      load_average_1m: 18.72
+      load_average_5m: 17.85
+      load_average_15m: 16.92
+      memory_total_bytes: 137438953472 # 128GB
+      memory_used_bytes: 116823293952 # ~109GB
+      memory_free_bytes: 5368709120 # ~5GB
+      memory_cached_bytes: 14247462912 # ~13.3GB (buffer cache)
+      memory_buffers_bytes: 1073741824
+      memory_usage_percent: 85.0
+      memory_available_bytes: 20615843840
+      swap_total_bytes: 17179869184
+      swap_used_bytes: 0
+      swap_usage_percent: 0.0
+      disk_total_bytes: 4398046511104 # 4TB SSD
+      disk_used_bytes: 2638827906662 # ~2.4TB
+      disk_free_bytes: 1759218604442
+      disk_usage_percent: 60.0
+      disk_read_bytes_per_sec: 209715200 # 200MB/s
+      disk_write_bytes_per_sec: 157286400 # 150MB/s
+      disk_iops_read: 5200
+      disk_iops_write: 3800
+      disk_io_time_percent: 65.5
+      network_receive_bytes_per_sec: 157286400
+      network_transmit_bytes_per_sec: 209715200
+      network_receive_packets_per_sec: 120000
+      network_transmit_packets_per_sec: 160000
+      network_receive_errors: 0
+      network_transmit_errors: 0
+      network_receive_drops: 5
+      network_transmit_drops: 2
+      tcp_connections_established: 4850
+      tcp_connections_time_wait: 280
+      postgresql_connections_active: 185
+      postgresql_connections_idle: 65
+      postgresql_transactions_per_sec: 2850
+      postgresql_replication_lag_bytes: 0
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    node: "db-primary"
+    instance: "10.0.2.10:9100"
+    job: "node-exporter"
+    region: "us-east-1"
+    availability_zone: "us-east-1a"
+    role: "database"
+    metrics:
+      cpu_usage_percent: 55.2
+      cpu_user_percent: 42.8
+      cpu_system_percent: 8.2
+      cpu_iowait_percent: 4.2
+      cpu_steal_percent: 0.0
+      cpu_cores: 32
+      load_average_1m: 17.66
+      load_average_5m: 16.92
+      load_average_15m: 16.25
+      memory_total_bytes: 137438953472
+      memory_used_bytes: 115749552128
+      memory_free_bytes: 5905580032
+      memory_cached_bytes: 14784333824
+      memory_buffers_bytes: 1073741824
+      memory_usage_percent: 84.2
+      memory_available_bytes: 21152714752
+      swap_total_bytes: 17179869184
+      swap_used_bytes: 0
+      swap_usage_percent: 0.0
+      disk_total_bytes: 4398046511104
+      disk_used_bytes: 2631610204160
+      disk_free_bytes: 1766436306944
+      disk_usage_percent: 59.8
+      disk_read_bytes_per_sec: 198180864
+      disk_write_bytes_per_sec: 150994944
+      disk_iops_read: 4920
+      disk_iops_write: 3650
+      disk_io_time_percent: 62.8
+      network_receive_bytes_per_sec: 150994944
+      network_transmit_bytes_per_sec: 198180864
+      network_receive_packets_per_sec: 115000
+      network_transmit_packets_per_sec: 152000
+      network_receive_errors: 0
+      network_transmit_errors: 0
+      network_receive_drops: 4
+      network_transmit_drops: 2
+      tcp_connections_established: 4720
+      tcp_connections_time_wait: 265
+      postgresql_connections_active: 178
+      postgresql_connections_idle: 72
+      postgresql_transactions_per_sec: 2720
+      postgresql_replication_lag_bytes: 0
+
+  # ============================================
+  # REDIS-CLUSTER-01 (Cache Node)
+  # ============================================
+  - timestamp: "2025-12-01T03:06:00Z"
+    node: "redis-cluster-01"
+    instance: "10.0.3.10:9100"
+    job: "node-exporter"
+    region: "us-east-1"
+    availability_zone: "us-east-1a"
+    role: "cache"
+    metrics:
+      cpu_usage_percent: 22.5
+      cpu_user_percent: 18.2
+      cpu_system_percent: 3.5
+      cpu_iowait_percent: 0.8
+      cpu_steal_percent: 0.0
+      cpu_cores: 8
+      load_average_1m: 1.8
+      load_average_5m: 1.72
+      load_average_15m: 1.65
+      memory_total_bytes: 68719476736 # 64GB
+      memory_used_bytes: 58212197376 # ~54.2GB (Redis memory)
+      memory_free_bytes: 4294967296
+      memory_cached_bytes: 5368709120
+      memory_buffers_bytes: 843152384
+      memory_usage_percent: 84.7
+      memory_available_bytes: 10506313728
+      swap_total_bytes: 0
+      swap_used_bytes: 0
+      swap_usage_percent: 0.0
+      disk_total_bytes: 214748364800
+      disk_used_bytes: 53687091200
+      disk_free_bytes: 161061273600
+      disk_usage_percent: 25.0
+      disk_read_bytes_per_sec: 524288
+      disk_write_bytes_per_sec: 10485760
+      disk_iops_read: 15
+      disk_iops_write: 280
+      disk_io_time_percent: 2.5
+      network_receive_bytes_per_sec: 125829120
+      network_transmit_bytes_per_sec: 188743680
+      network_receive_packets_per_sec: 185000
+      network_transmit_packets_per_sec: 185000
+      network_receive_errors: 0
+      network_transmit_errors: 0
+      network_receive_drops: 0
+      network_transmit_drops: 0
+      tcp_connections_established: 12500
+      tcp_connections_time_wait: 850
+      redis_connected_clients: 580
+      redis_commands_per_sec: 125000
+      redis_hit_rate_percent: 92.5
+      redis_memory_used_bytes: 55834574848
+      redis_evicted_keys: 0
+
+  - timestamp: "2025-12-01T03:06:00Z"
+    node: "redis-cluster-01"
+    instance: "10.0.3.10:9100"
+    job: "node-exporter"
+    region: "us-east-1"
+    availability_zone: "us-east-1a"
+    role: "cache"
+    metrics:
+      cpu_usage_percent: 21.2
+      cpu_user_percent: 17.5
+      cpu_system_percent: 3.2
+      cpu_iowait_percent: 0.5
+      cpu_steal_percent: 0.0
+      cpu_cores: 8
+      load_average_1m: 1.7
+      load_average_5m: 1.65
+      load_average_15m: 1.58
+      memory_total_bytes: 68719476736
+      memory_used_bytes: 57888210944
+      memory_free_bytes: 4618953728
+      memory_cached_bytes: 5368709120
+      memory_buffers_bytes: 843152384
+      memory_usage_percent: 84.3
+      memory_available_bytes: 10830700544
+      swap_total_bytes: 0
+      swap_used_bytes: 0
+      swap_usage_percent: 0.0
+      disk_total_bytes: 214748364800
+      disk_used_bytes: 53150220288
+      disk_free_bytes: 161598144512
+      disk_usage_percent: 24.7
+      disk_read_bytes_per_sec: 491520
+      disk_write_bytes_per_sec: 9961472
+      disk_iops_read: 14
+      disk_iops_write: 265
+      disk_io_time_percent: 2.2
+      network_receive_bytes_per_sec: 120586240
+      network_transmit_bytes_per_sec: 180355072
+      network_receive_packets_per_sec: 178000
+      network_transmit_packets_per_sec: 178000
+      network_receive_errors: 0
+      network_transmit_errors: 0
+      network_receive_drops: 0
+      network_transmit_drops: 0
+      tcp_connections_established: 12200
+      tcp_connections_time_wait: 820
+      redis_connected_clients: 565
+      redis_commands_per_sec: 120000
+      redis_hit_rate_percent: 92.8
+      redis_memory_used_bytes: 55510587904
+      redis_evicted_keys: 0
